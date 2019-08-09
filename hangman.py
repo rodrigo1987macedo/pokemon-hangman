@@ -92,8 +92,9 @@ while True:
 
                 break
 
-            print("########")
+            print(" ")
             print("Please enter only one string character")
+            print(" ")
 
         # get the index inside the string where the ocurrence took place
         index = pokemon.find(shot)
@@ -149,9 +150,10 @@ while True:
             status_print(strikes, top_strikes, guesses, letters_string, "Missed!")
 
             if strikes == top_strikes:
-                print("########")
+                print(" ")
                 print("The pokemon was: %s" % pokemon_result.upper())
                 print("Game over")
+                print(" ")
 
     # ask if want to quit playing
     quit_playing = raw_input("Enter any key to continue, 'q' to quit: ")
