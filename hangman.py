@@ -71,6 +71,10 @@ while True:
     # set list for letters guessed
     guesses = []
 
+    # define os for clear console function
+    def cls():
+        os.system("cls" if os.name == "nt" else "clear")
+
     while strikes < top_strikes:
 
         # function to display messages in each guess
@@ -125,6 +129,9 @@ while True:
                     # add new shot to guesses list
                     guesses.append(shot)
 
+                    # clear the screen
+                    cls()
+
                     # print all inputs and guesses
                     status_print(
                         strikes, top_strikes, guesses, letters_string, "Correct!"
@@ -146,21 +153,19 @@ while True:
             # add to log of letters guessed
             guesses.append(shot)
 
+            # clear the screen
+            cls()
+
             # print all inputs and guesses
             status_print(strikes, top_strikes, guesses, letters_string, "Missed!")
 
             if strikes == top_strikes:
-                print(" ")
                 print("The pokemon was: %s" % pokemon_result.upper())
                 print("Game over")
                 print(" ")
 
     # ask if want to quit playing
     quit_playing = raw_input("Enter any key to continue, 'q' to quit: ")
-
-    # define os for clear console function
-    def cls():
-        os.system("cls" if os.name == "nt" else "clear")
 
     # clear the screen
     cls()
