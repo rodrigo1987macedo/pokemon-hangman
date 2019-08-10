@@ -93,6 +93,15 @@ while True:
             print("Strikes: %s/%s" % (strikes, top_strikes))
             print("Letters already tried: %s" % guesses)
             print(letters_string.upper())
+
+            if strikes == top_strikes - 1:
+                pokemon_result_data = requests.get("https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result)
+                parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][0]["type"]["name"]
+                print(" ")
+                print("WATCH OUT!")
+                print("You have only one strike left!")
+                print("Hint: It's a %s type pokemon!" % parsed_pokemon_result_data)
+
             print(" ")
 
         # input, try to guess a letter from pokemon
