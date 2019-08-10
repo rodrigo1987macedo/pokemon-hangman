@@ -62,6 +62,9 @@ while True:
             pokemon_result = pokemon_item["name"]
             # establish a string to be substituted with "0" each time a letter is correctly guessed
             pokemon = pokemon_item["name"]
+            # get selcted pokemon type
+            pokemon_result_data = requests.get("https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result)
+            parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][0]["type"]["name"]
 
     # set an list for pokemon letters to be stored
     letters_list = []
@@ -95,8 +98,6 @@ while True:
             print(letters_string.upper())
 
             if strikes == top_strikes - 1:
-                pokemon_result_data = requests.get("https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result)
-                parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][0]["type"]["name"]
                 print(" ")
                 print("WATCH OUT!")
                 print("You have only one strike left!")
