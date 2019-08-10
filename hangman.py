@@ -62,7 +62,7 @@ while True:
             pokemon_result = pokemon_item["name"]
             # establish a string to be substituted with "0" each time a letter is correctly guessed
             pokemon = pokemon_item["name"]
-            # get selcted pokemon type
+            # get selected pokemon type
             pokemon_result_data = requests.get("https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result)
             parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][0]["type"]["name"]
 
