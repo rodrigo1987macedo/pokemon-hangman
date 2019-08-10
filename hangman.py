@@ -158,8 +158,7 @@ while True:
                     break
 
             # is every character in pokemon string = 0? then display success message
-            string_len_checker = int(len(pokemon))
-            if pokemon == string_len_checker * "0":
+            if pokemon == len(pokemon) * "0":
                 print("Congratulations, you won!")
                 break
 
