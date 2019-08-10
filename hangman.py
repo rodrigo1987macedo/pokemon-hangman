@@ -12,6 +12,10 @@ print("WELCOME TO POKEMON HANGMAN!")
 print("Discover the hidden pokemon name")
 print(" ")
 
+# define os for clear console function
+def cls():
+    os.system("cls" if os.name == "nt" else "clear")
+
 # the game
 while True:
 
@@ -22,18 +26,28 @@ while True:
 
         if level == "1":
             top_strikes = 10
+            # clear the screen
+            cls()
             break
         elif level == "2":
             top_strikes = 9
+            # clear the screen
+            cls()
             break
         elif level == "3":
             top_strikes = 8
+            # clear the screen
+            cls()
             break
         elif level == "4":
             top_strikes = 7
+            # clear the screen
+            cls()
             break
         elif level == "5":
             top_strikes = 6
+            # clear the screen
+            cls()
             break
         else:
             print("Enter a number from 1 to 5")
@@ -71,16 +85,11 @@ while True:
     # set list for letters guessed
     guesses = []
 
-    # define os for clear console function
-    def cls():
-        os.system("cls" if os.name == "nt" else "clear")
-
     while strikes < top_strikes:
 
         # function to display messages in each guess
         def status_print(strikes, top_strikes, guesses, letters_string, message):
-            print(" ")
-            print(message)
+            print('Last shot: %s' % message)
             print("Strikes: %s/%s" % (strikes, top_strikes))
             print("Letters already tried: %s" % guesses)
             print(letters_string.upper())
