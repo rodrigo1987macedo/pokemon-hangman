@@ -12,17 +12,17 @@ print("WELCOME TO POKEMON HANGMAN!")
 print("Discover the hidden pokemon name")
 print(" ")
 
+
 # define os for clear console function
 def cls():
     os.system("cls" if os.name == "nt" else "clear")
 
+
 # the game
 while True:
-
     # choose a level to play
     while True:
-
-        level = raw_input("Choose a difficulty level from 1 to 5: ")
+        level = input("Choose a difficulty level from 1 to 5: ")
 
         if level == "1":
             top_strikes = 10
@@ -63,8 +63,12 @@ while True:
             # establish a string to be substituted with "0" each time a letter is correctly guessed
             pokemon = pokemon_item["name"]
             # get selected pokemon type
-            pokemon_result_data = requests.get("https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result)
-            parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][0]["type"]["name"]
+            pokemon_result_data = requests.get(
+                "https://pokeapi.co/api/v2/pokemon/%s" % pokemon_result
+            )
+            parsed_pokemon_result_data = json.loads(pokemon_result_data.text)["types"][
+                0
+            ]["type"]["name"]
 
     # set an list for pokemon letters to be stored
     letters_list = []
@@ -89,10 +93,9 @@ while True:
     guesses = []
 
     while strikes < top_strikes:
-
         # function to display messages in each guess
         def status_print(strikes, top_strikes, guesses, letters_string, message):
-            print('Last shot: %s' % message)
+            print("Last shot: %s" % message)
             print("Strikes: %s/%s" % (strikes, top_strikes))
             print("Letters already tried: %s" % guesses)
             print(letters_string.upper())
@@ -107,12 +110,10 @@ while True:
 
         # input, try to guess a letter from pokemon
         while True:
-
-            shot = raw_input("Try guessing a letter: ")
+            shot = input("Try guessing a letter: ")
 
             # do not allow more than one characters
             if len(shot) == 1:
-
                 break
 
             print(" ")
@@ -124,12 +125,9 @@ while True:
 
         # in case is correct
         if index != -1:
-
             # loop same letter until index = pokemon.find(shot) is no longer != -1
             while True:
-
                 if index != -1:
-
                     # add correct chosen letter to list
                     letters_list.insert(index, shot)
                     # remove underscore from correct chosen letter index from list
@@ -144,7 +142,6 @@ while True:
                     letters_string = " ".join(letters_list)
 
                 else:
-
                     # add new shot to guesses list
                     guesses.append(shot)
 
@@ -164,7 +161,6 @@ while True:
 
         # in case is not correct
         elif index == -1:
-
             # add one strike
             strikes = strikes + 1
 
@@ -183,11 +179,10 @@ while True:
                 print(" ")
 
     # ask if want to quit playing
-    quit_playing = raw_input("Enter any key to continue, 'q' to quit: ")
+    quit_playing = input("Enter any key to continue, 'q' to quit: ")
 
     # clear the screen
     cls()
 
     if quit_playing == "q":
         break
-
