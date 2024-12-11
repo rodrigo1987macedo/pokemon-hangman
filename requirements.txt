@@ -16,7 +16,7 @@ msgpack==0.6.1
 pastel==0.1.0
 pathlib2==2.3.3
 pkginfo==1.5.0.1
-poetry==0.12.11
+poetry==1.1.9
 Pygments==2.3.1
 pylev==1.3.0
 pyparsing==2.4.0
